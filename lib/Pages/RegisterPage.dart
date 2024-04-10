@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'RegisterPage.dart'; // Import the RegisterPage file
+import 'LoginPage.dart'; // Import the LoginPage file
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,22 +10,22 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppBar(
-              title: Text('Login'),
+              title: Text('Register'),
               centerTitle: true,
               automaticallyImplyLeading: false, // Remove back button
             ),
-            SizedBox(height: 20), // Adjust the spacing between the AppBar and the login box
-            _buildLoginBox(context),
-            SizedBox(height: 20), // Add spacing between the login box and the text
+            SizedBox(height: 20), // Adjust the spacing between the AppBar and the registration form
+            _buildRegisterForm(context),
+            SizedBox(height: 20), // Add spacing between the registration form and the text
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
               child: Text(
-                'New user? Register now',
+                'Already have an account? Login',
                 style: TextStyle(color: Colors.blue), // Add some style to the text
               ),
             ),
@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginBox(BuildContext context) {
+  Widget _buildRegisterForm(BuildContext context) {
     return Container(
       width: 300,
       padding: EdgeInsets.all(20),
@@ -47,7 +47,25 @@ class LoginPage extends StatelessWidget {
         children: [
           TextField(
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: 'First Name',
+            ),
+          ),
+          SizedBox(height: 20),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Last Name',
+            ),
+          ),
+          SizedBox(height: 20),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Gender',
+            ),
+          ),
+          SizedBox(height: 20),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Email',
             ),
           ),
           SizedBox(height: 20),
@@ -60,16 +78,10 @@ class LoginPage extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {},
-            child: Text('Login'),
+            child: Text('Register'),
           ),
         ],
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: LoginPage(),
-  ));
 }
